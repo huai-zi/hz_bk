@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="槐子">
 <meta property="og:description" content="VUE 基础知识手册1. 声明接管区域 123456789&amp;lt;div id=&amp;quot;box&amp;quot;&amp;gt;&amp;lt;/div&amp;gt; 需要new一个函数,进行接管我们使用区域new Vue(&amp;#123;       el: &amp;quot;#box&amp;quot;,       data: &amp;#123;           name: &amp;quot;我就是我,是颜色不一样的烟火&amp;quot;,">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-08T02:55:14.718Z">
+<meta property="og:updated_time" content="2018-12-15T00:47:02.751Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vue_student">
 <meta name="twitter:description" content="VUE 基础知识手册1. 声明接管区域 123456789&amp;lt;div id=&amp;quot;box&amp;quot;&amp;gt;&amp;lt;/div&amp;gt; 需要new一个函数,进行接管我们使用区域new Vue(&amp;#123;       el: &amp;quot;#box&amp;quot;,       data: &amp;#123;           name: &amp;quot;我就是我,是颜色不一样的烟火&amp;quot;,">
@@ -459,7 +459,7 @@
 <li>每次打包前将代理标识(‘/api’)继续删除</li>
 <li>将请求,进行处理,在远程主机地址位置,写上请求的标识(当然向多个服务器请求的时候,需要写多个请求方式)</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">proxyTable:&#123;</span><br><span class="line">	&apos;/api&apos;:&#123;</span><br><span class="line">		taeget:&quot;http://0.0.0.0/api&quot;,//指定要跨域的远程主机地址</span><br><span class="line">		//changeOrigin:true,//</span><br><span class="line">		pathRewrite:&#123;</span><br><span class="line">			&apos;^/api&apos;:&apos;&apos;//将符合冒号左边的字符串替换成冒号右边的值(实际上是正则再进行匹配)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;,</span><br><span class="line">	&apos;/jsonp&apos;:&#123;</span><br><span class="line">		taeget:&quot;http://0.0.0.0/&quot;,//指定要跨域的远程主机地址</span><br><span class="line">		pathRewrite:&#123;</span><br><span class="line">			&apos;^/jsonp&apos;:&apos;&apos;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">//参数解析</span><br><span class="line">	远程主机地址 			get请求部分</span><br><span class="line">&apos;http://0.0.0.0/&apos;    &apos;api/getuser&apos;</span><br><span class="line">//拼接之后的地址</span><br><span class="line">&apos;http://0.0.0.0/api/getuser&apos;</span><br><span class="line">//实际数据地址</span><br><span class="line">&apos;http://0.0.0.0/getuser&apos;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">proxyTable:&#123;</span><br><span class="line">	&apos;/api&apos;:&#123;</span><br><span class="line">		target:&quot;http://0.0.0.0/api&quot;,//指定要跨域的远程主机地址</span><br><span class="line">		//changeOrigin:true,//</span><br><span class="line">		pathRewrite:&#123;</span><br><span class="line">			&apos;^/api&apos;:&apos;&apos;//将符合冒号左边的字符串替换成冒号右边的值(实际上是正则再进行匹配)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;,</span><br><span class="line">	&apos;/jsonp&apos;:&#123;</span><br><span class="line">		target:&quot;http://0.0.0.0/&quot;,//指定要跨域的远程主机地址</span><br><span class="line">		pathRewrite:&#123;</span><br><span class="line">			&apos;^/jsonp&apos;:&apos;&apos;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">//参数解析</span><br><span class="line">	远程主机地址 			get请求部分</span><br><span class="line">&apos;http://0.0.0.0/&apos;    &apos;api/getuser&apos;</span><br><span class="line">//拼接之后的地址</span><br><span class="line">&apos;http://0.0.0.0/api/getuser&apos;</span><br><span class="line">//实际数据地址</span><br><span class="line">&apos;http://0.0.0.0/getuser&apos;</span><br></pre></td></tr></table></figure>
 <h3 id="插件安装过程-都为开发环境下的插件安装"><a href="#插件安装过程-都为开发环境下的插件安装" class="headerlink" title="插件安装过程(都为开发环境下的插件安装)"></a>插件安装过程(都为开发环境下的插件安装)</h3><ol>
 <li>bootstrap-paginator(基于bootstrap的分页插件，依赖于bootstrap下才能执行)</li>
 </ol>
@@ -622,7 +622,7 @@
               
                 <a href="/hz_bk/archives">
               
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -633,7 +633,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/hz_bk/categories/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -644,7 +644,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/hz_bk/tags/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -733,7 +733,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

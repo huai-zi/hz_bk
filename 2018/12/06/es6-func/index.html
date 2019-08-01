@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="&amp;nbsp;&amp;nbsp;总想这抽个时间把方法归类一下，自己用的东西多了，也不能完全记住。能有个存储的地方，倒还是不错，将常用的方法，还有处理数据的方式进行诠释一下，能够提供帮助。 ###字符串的扩展  在es5常用的indexOf()方式，可能已经用的太多了，今天能有新的方法，真的很幸运，也很苦恼（又得多占用俺得脑容量），说说es6新添加的方法:  includes()：返回布尔值，表示是否找到了">
+<meta name="description" content="&amp;nbsp;&amp;nbsp;总想这抽个时间把方法归类一下，自己用的东西多了，也不能完全记住。能有个存储的地方，倒还是不错，将常用的方法，还有处理数据的方式进行诠释一下，能够提供帮助。 字符串的扩展 在es5常用的indexOf()方式，可能已经用的太多了，今天能有新的方法，真的很幸运，也很苦恼（又得多占用俺得脑容量），说说es6新添加的方法:  includes()：返回布尔值，表示是否找到了参数字符">
 <meta name="keywords" content="es6常用的方法解释">
 <meta property="og:type" content="article">
 <meta property="og:title" content="es6_func">
 <meta property="og:url" content="https://huai-zi.github.io/2018/12/06/es6-func/index.html">
 <meta property="og:site_name" content="槐子">
-<meta property="og:description" content="&amp;nbsp;&amp;nbsp;总想这抽个时间把方法归类一下，自己用的东西多了，也不能完全记住。能有个存储的地方，倒还是不错，将常用的方法，还有处理数据的方式进行诠释一下，能够提供帮助。 ###字符串的扩展  在es5常用的indexOf()方式，可能已经用的太多了，今天能有新的方法，真的很幸运，也很苦恼（又得多占用俺得脑容量），说说es6新添加的方法:  includes()：返回布尔值，表示是否找到了">
+<meta property="og:description" content="&amp;nbsp;&amp;nbsp;总想这抽个时间把方法归类一下，自己用的东西多了，也不能完全记住。能有个存储的地方，倒还是不错，将常用的方法，还有处理数据的方式进行诠释一下，能够提供帮助。 字符串的扩展 在es5常用的indexOf()方式，可能已经用的太多了，今天能有新的方法，真的很幸运，也很苦恼（又得多占用俺得脑容量），说说es6新添加的方法:  includes()：返回布尔值，表示是否找到了参数字符">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-06T02:22:57.714Z">
+<meta property="og:updated_time" content="2019-03-09T02:58:14.102Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="es6_func">
-<meta name="twitter:description" content="&amp;nbsp;&amp;nbsp;总想这抽个时间把方法归类一下，自己用的东西多了，也不能完全记住。能有个存储的地方，倒还是不错，将常用的方法，还有处理数据的方式进行诠释一下，能够提供帮助。 ###字符串的扩展  在es5常用的indexOf()方式，可能已经用的太多了，今天能有新的方法，真的很幸运，也很苦恼（又得多占用俺得脑容量），说说es6新添加的方法:  includes()：返回布尔值，表示是否找到了">
+<meta name="twitter:description" content="&amp;nbsp;&amp;nbsp;总想这抽个时间把方法归类一下，自己用的东西多了，也不能完全记住。能有个存储的地方，倒还是不错，将常用的方法，还有处理数据的方式进行诠释一下，能够提供帮助。 字符串的扩展 在es5常用的indexOf()方式，可能已经用的太多了，今天能有新的方法，真的很幸运，也很苦恼（又得多占用俺得脑容量），说说es6新添加的方法:  includes()：返回布尔值，表示是否找到了参数字符">
 
 
 
@@ -353,8 +353,7 @@
 
       
         <p>&nbsp;&nbsp;总想这抽个时间把方法归类一下，自己用的东西多了，也不能完全记住。能有个存储的地方，倒还是不错，将常用的方法，还有处理数据的方式进行诠释一下，能够提供帮助。</p>
-<p>###字符串的扩展</p>
-<blockquote>
+<h3 id="字符串的扩展"><a href="#字符串的扩展" class="headerlink" title="字符串的扩展"></a>字符串的扩展</h3><blockquote>
 <p>在es5常用的indexOf()方式，可能已经用的太多了，今天能有新的方法，真的很幸运，也很苦恼（又得多占用俺得脑容量），说说es6新添加的方法:</p>
 <ul>
 <li>includes()：返回布尔值，表示是否找到了参数字符串。</li>
@@ -362,8 +361,58 @@
 <li>endsWith()：返回布尔值，表示参数字符串是否在原字符串的尾部。</li>
 </ul>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let s = &apos;my name is huaizi!&apos;;</span><br><span class="line">s.includes(&apos;huaizi&apos;); //true</span><br><span class="line">s.startWith(&apos;my&apos;); //true</span><br><span class="line">s.endsWith(&apos;!&apos;); //true</span><br></pre></td></tr></table></figure>
-<p><code>这三个方法都支持第二个参数，表示开始搜索的位置</code></p>
+<h4 id="includes-startsWith-endsWith"><a href="#includes-startsWith-endsWith" class="headerlink" title="includes(),startsWith(),endsWith()"></a>includes(),startsWith(),endsWith()</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let s = &apos;my name is huaizi!&apos;;</span><br><span class="line">s.includes(&apos;huaizi&apos;); //true</span><br><span class="line">s.startsWith(&apos;my&apos;); //true</span><br><span class="line">s.endsWith(&apos;!&apos;); //true</span><br></pre></td></tr></table></figure>
+<p><code>这三个方法都支持第二个参数，表示开始搜索的位置（从什么地方开始搜索）</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let s = &apos;Hello world!&apos;;</span><br><span class="line">s.startsWith(&apos;world&apos;, 6) // true</span><br><span class="line">s.endsWith(&apos;Hello&apos;, 5) // true</span><br><span class="line">s.includes(&apos;Hello&apos;, 6) // false</span><br></pre></td></tr></table></figure></p>
+<h4 id="repeat"><a href="#repeat" class="headerlink" title="repeat()"></a>repeat()</h4><blockquote>
+<p>repeat方法返回一个新字符串，表示将原字符串重复n次。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&apos;x&apos;.repeat(3) // &quot;xxx&quot;</span><br><span class="line">&apos;hello&apos;.repeat(2) // &quot;hellohello&quot;</span><br><span class="line">&apos;na&apos;.repeat(0) // &quot;&quot;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h4 id="padStart-padEnd"><a href="#padStart-padEnd" class="headerlink" title="padStart(),padEnd()"></a>padStart(),padEnd()</h4><p><code>ES2017 引入了字符串补全长度的功能。如果某个字符串不够指定长度，会在头部或尾部补全。padStart()用于头部补全，padEnd()用于尾部补全。</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&apos;x&apos;.padStart(5, &apos;ab&apos;) // &apos;ababx&apos;</span><br><span class="line">&apos;x&apos;.padStart(4, &apos;ab&apos;) // &apos;abax&apos;</span><br><span class="line">&apos;x&apos;.padEnd(5, &apos;ab&apos;) // &apos;xabab&apos;</span><br><span class="line">&apos;x&apos;.padEnd(4, &apos;ab&apos;) // &apos;xaba&apos;</span><br></pre></td></tr></table></figure></p>
+<h4 id="matchAll"><a href="#matchAll" class="headerlink" title="matchAll()"></a>matchAll()</h4><p><code>matchAll方法返回一个正则表达式在当前字符串的所有匹配</code></p>
+<a id="more"></a>
+<h3 id="数值的扩展"><a href="#数值的扩展" class="headerlink" title="数值的扩展"></a>数值的扩展</h3><h4 id="Number-isFinite-Number-isNaN"><a href="#Number-isFinite-Number-isNaN" class="headerlink" title="Number.isFinite(),Number.isNaN()"></a>Number.isFinite(),Number.isNaN()</h4><blockquote>
+<p>Number.isFinite()用来检查一个数值是否为有限的（finite），即不是Infinity。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Number.isFinite(15); // true</span><br><span class="line">Number.isFinite(0.8); // true</span><br><span class="line">Number.isFinite(NaN); // false</span><br><span class="line">Number.isFinite(Infinity); // false</span><br><span class="line">Number.isFinite(-Infinity); // false</span><br><span class="line">Number.isFinite(&apos;foo&apos;); // false</span><br><span class="line">Number.isFinite(&apos;15&apos;); // false</span><br><span class="line">Number.isFinite(true); // false</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>Number.isNaN()用来检查一个值是否为NaN。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Number.isNaN(NaN) // true</span><br><span class="line">Number.isNaN(15) // false</span><br><span class="line">Number.isNaN(&apos;15&apos;) // false</span><br><span class="line">Number.isNaN(true) // false</span><br><span class="line">Number.isNaN(9/NaN) // true</span><br><span class="line">Number.isNaN(&apos;true&apos; / 0) // true</span><br><span class="line">Number.isNaN(&apos;true&apos; / &apos;true&apos;) // true</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h4 id="Number-parseInt-Number-parseFloat"><a href="#Number-parseInt-Number-parseFloat" class="headerlink" title="Number.parseInt(),Number.parseFloat()"></a>Number.parseInt(),Number.parseFloat()</h4><p><code>es5的方法parseInt()和parseFloat()和现有的功能一致，进行全局化了</code></p>
+<h4 id="Number-isInteger"><a href="#Number-isInteger" class="headerlink" title="Number.isInteger()"></a>Number.isInteger()</h4><blockquote>
+<p>Number.isInteger()用来判断一个数值是否为整数。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Number.isInteger(25) // true</span><br><span class="line">Number.isInteger(25.1) // false</span><br><span class="line">Number.isInteger(25.0) // true</span><br><span class="line">Number.isInteger() // false</span><br><span class="line">Number.isInteger(null) // false</span><br><span class="line">Number.isInteger(&apos;15&apos;) // false</span><br><span class="line">Number.isInteger(true) // false</span><br><span class="line">Number.isInteger(3.0000000000000002) // true</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h4 id="Math-trunc"><a href="#Math-trunc" class="headerlink" title="Math.trunc()"></a>Math.trunc()</h4><blockquote>
+<p>方法用于去除一个数的小数部分，返回整数部分。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Math.trunc(4.1) // 4</span><br><span class="line">Math.trunc(4.9) // 4</span><br><span class="line">Math.trunc(-4.1) // -4</span><br><span class="line">Math.trunc(-4.9) // -4</span><br><span class="line">Math.trunc(-0.1234) // -0</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p><code>对于非数值，Math.trunc内部使用Number方法将其先转为数值。</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Math.trunc(&apos;123.456&apos;) // 123</span><br><span class="line">Math.trunc(true) //1</span><br><span class="line">Math.trunc(false) // 0</span><br><span class="line">Math.trunc(null) // 0</span><br></pre></td></tr></table></figure></p>
+<h4 id="Math-sign"><a href="#Math-sign" class="headerlink" title="Math.sign()"></a>Math.sign()</h4><blockquote>
+<p>Math.sign方法用来判断一个数到底是正数、负数、还是零。对于非数值，会先将其转换为数值。</p>
+<ol>
+<li>参数为正数，返回+1；</li>
+<li>参数为负数，返回-1；</li>
+<li>参数为 0，返回0；</li>
+<li>参数为-0，返回-0;</li>
+<li>其他值，返回NaN。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Math.sign(-5) // -1</span><br><span class="line">Math.sign(5) // +1</span><br><span class="line">Math.sign(0) // +0</span><br><span class="line">Math.sign(-0) // -0</span><br><span class="line">Math.sign(NaN) // NaN</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</blockquote>
+<h4 id="Math-cbrt"><a href="#Math-cbrt" class="headerlink" title="Math.cbrt()"></a>Math.cbrt()</h4><blockquote>
+<p>Math.cbrt方法用于计算一个数的立方根。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Math.cbrt(-1) // -1</span><br><span class="line">Math.cbrt(0)  // 0</span><br><span class="line">Math.cbrt(1)  // 1</span><br><span class="line">Math.cbrt(2)  // 1.2599210498948734</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h4 id="Math-clz32"><a href="#Math-clz32" class="headerlink" title="Math.clz32()"></a>Math.clz32()</h4><blockquote>
+<p> 32 位二进制形式表示，Math.clz32方法返回一个数的 32 位无符号整数形式有多少个前导 0。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Math.clz32(0) // 32</span><br><span class="line">Math.clz32(1) // 31</span><br><span class="line">Math.clz32(1000) // 22</span><br><span class="line">Math.clz32(0b01000000000000000000000000000000) // 1</span><br><span class="line">Math.clz32(0b00100000000000000000000000000000) // 2</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h4 id="Math-hypot"><a href="#Math-hypot" class="headerlink" title="Math.hypot()"></a>Math.hypot()</h4><blockquote>
+<p>Math.hypot方法返回所有参数的平方和的平方根。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Math.hypot(3, 4);        // 5</span><br><span class="line">Math.hypot(3, 4, 5);     // 7.0710678118654755</span><br><span class="line">Math.hypot();            // 0</span><br><span class="line">Math.hypot(NaN);         // NaN</span><br><span class="line">Math.hypot(3, 4, &apos;foo&apos;); // NaN</span><br><span class="line">Math.hypot(3, 4, &apos;5&apos;);   // 7.0710678118654755</span><br><span class="line">Math.hypot(-3);          // 3</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h3 id="函数的扩展"><a href="#函数的扩展" class="headerlink" title="函数的扩展"></a>函数的扩展</h3><h4 id="与解构赋值默认值结合使用"><a href="#与解构赋值默认值结合使用" class="headerlink" title="与解构赋值默认值结合使用"></a>与解构赋值默认值结合使用</h4><h4 id="reset参数（…变量名）用于获取函数的多余参数，这样就不需要使用arguments对象了"><a href="#reset参数（…变量名）用于获取函数的多余参数，这样就不需要使用arguments对象了" class="headerlink" title="reset参数（…变量名）用于获取函数的多余参数，这样就不需要使用arguments对象了"></a>reset参数（…变量名）用于获取函数的多余参数，这样就不需要使用arguments对象了</h4><h4 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">箭头函数有几个使用注意点。</span><br><span class="line">（1）函数体内的this对象，就是定义时所在的对象，而不是使用时所在的对象。</span><br><span class="line">（2）不可以当作构造函数，也就是说，不可以使用new命令，否则会抛出一个错误。</span><br><span class="line">（3）不可以使用arguments对象，该对象在函数体内不存在。如果要用，可以用 rest 参数代替。</span><br><span class="line">（4）不可以使用yield命令，因此箭头函数不能用作 Generator 函数。</span><br></pre></td></tr></table></figure>
+<h4 id="双冒号运算符"><a href="#双冒号运算符" class="headerlink" title="双冒号运算符::"></a>双冒号运算符::</h4><blockquote>
+<p>箭头函数可以绑定this对象，大大减少了显式绑定this对象的写法（call、apply、bind）。但是，箭头函数并不适用于所有场合，所以现在有一个提案，提出了“函数绑定”（function bind）运算符，用来取代call、apply、bind调用。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">foo::bar;</span><br><span class="line">// 等同于</span><br><span class="line">bar.bind(foo);</span><br><span class="line">foo::bar(...arguments);</span><br><span class="line">// 等同于</span><br><span class="line">bar.apply(foo, arguments);</span><br><span class="line">const hasOwnProperty = Object.prototype.hasOwnProperty;</span><br><span class="line">function hasOwn(obj, key) &#123;</span><br><span class="line">  return obj::hasOwnProperty(key);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="数组的扩展"><a href="#数组的扩展" class="headerlink" title="数组的扩展"></a>数组的扩展</h3><h4 id="扩展运算符（spread）是三个点（…）。它好比-rest-参数的逆运算，将一个数组转为用逗号分隔的参数序列"><a href="#扩展运算符（spread）是三个点（…）。它好比-rest-参数的逆运算，将一个数组转为用逗号分隔的参数序列" class="headerlink" title="扩展运算符（spread）是三个点（…）。它好比 rest 参数的逆运算，将一个数组转为用逗号分隔的参数序列"></a>扩展运算符（spread）是三个点（…）。它好比 rest 参数的逆运算，将一个数组转为用逗号分隔的参数序列</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function push(array, ...items) &#123;</span><br><span class="line">  array.push(...items);</span><br><span class="line">&#125;</span><br><span class="line">function add(x, y) &#123;</span><br><span class="line">  return x + y;</span><br><span class="line">&#125;</span><br><span class="line">const numbers = [4, 38];</span><br><span class="line">add(...numbers) // 42</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>还有很多知识点没有一一列出，总体是常用的一些方法，如果有兴趣，可以参考下面的文章或购买书籍</p>
+</blockquote>
+<p><a href="http://es6.ruanyifeng.com/" target="_blank" rel="noopener">参考ECMAScript 6 入门</a></p>
 
       
     </div>
@@ -487,8 +536,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -505,7 +563,7 @@
               
                 <a href="/hz_bk/archives">
               
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -516,7 +574,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/hz_bk/categories/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -527,7 +585,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/hz_bk/tags/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -587,6 +645,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#字符串的扩展"><span class="nav-number">1.</span> <span class="nav-text">字符串的扩展</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#includes-startsWith-endsWith"><span class="nav-number">1.1.</span> <span class="nav-text">includes(),startsWith(),endsWith()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#repeat"><span class="nav-number">1.2.</span> <span class="nav-text">repeat()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#padStart-padEnd"><span class="nav-number">1.3.</span> <span class="nav-text">padStart(),padEnd()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#matchAll"><span class="nav-number">1.4.</span> <span class="nav-text">matchAll()</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数值的扩展"><span class="nav-number">2.</span> <span class="nav-text">数值的扩展</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Number-isFinite-Number-isNaN"><span class="nav-number">2.1.</span> <span class="nav-text">Number.isFinite(),Number.isNaN()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Number-parseInt-Number-parseFloat"><span class="nav-number">2.2.</span> <span class="nav-text">Number.parseInt(),Number.parseFloat()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Number-isInteger"><span class="nav-number">2.3.</span> <span class="nav-text">Number.isInteger()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Math-trunc"><span class="nav-number">2.4.</span> <span class="nav-text">Math.trunc()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Math-sign"><span class="nav-number">2.5.</span> <span class="nav-text">Math.sign()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Math-cbrt"><span class="nav-number">2.6.</span> <span class="nav-text">Math.cbrt()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Math-clz32"><span class="nav-number">2.7.</span> <span class="nav-text">Math.clz32()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Math-hypot"><span class="nav-number">2.8.</span> <span class="nav-text">Math.hypot()</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数的扩展"><span class="nav-number">3.</span> <span class="nav-text">函数的扩展</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#与解构赋值默认值结合使用"><span class="nav-number">3.1.</span> <span class="nav-text">与解构赋值默认值结合使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#reset参数（…变量名）用于获取函数的多余参数，这样就不需要使用arguments对象了"><span class="nav-number">3.2.</span> <span class="nav-text">reset参数（…变量名）用于获取函数的多余参数，这样就不需要使用arguments对象了</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#箭头函数"><span class="nav-number">3.3.</span> <span class="nav-text">箭头函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#双冒号运算符"><span class="nav-number">3.4.</span> <span class="nav-text">双冒号运算符::</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数组的扩展"><span class="nav-number">4.</span> <span class="nav-text">数组的扩展</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#扩展运算符（spread）是三个点（…）。它好比-rest-参数的逆运算，将一个数组转为用逗号分隔的参数序列"><span class="nav-number">4.1.</span> <span class="nav-text">扩展运算符（spread）是三个点（…）。它好比 rest 参数的逆运算，将一个数组转为用逗号分隔的参数序列</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -600,7 +674,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

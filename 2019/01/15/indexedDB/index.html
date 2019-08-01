@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/hz_bk/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/hz_bk/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/hz_bk/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+<link href="/hz_bk/css/common.css" rel="stylesheet" type="text/css">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/hz_bk/images/apple-touch-icon-next.jpg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/hz_bk/images/favicon-32x32-next.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/hz_bk/images/favicon-16x16-next.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/hz_bk/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="indexedDB数据库,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="项目休息阶段，终于可以抽个时间来填充一下自己的知识库，页面绘制，对数据处理，数据库的相关知识点，都需要去普及以及能够掌握并使用，帮助自己能够成长，也是一项技术加分。提升自己，何乐而不为呢!  Web离线数据库，轻量级NOSQL数据库，浏览器自带 indexedDB是一种轻量级NOSQL数据库，由浏览器自带，相比Web Sql更加高效、包括索引、事务处理（数据的增删改查方法）和查询功能；在浏览器中">
+<meta name="keywords" content="indexedDB数据库">
+<meta property="og:type" content="article">
+<meta property="og:title" content="indexedDB">
+<meta property="og:url" content="https://huai-zi.github.io/2019/01/15/indexedDB/index.html">
+<meta property="og:site_name" content="槐子">
+<meta property="og:description" content="项目休息阶段，终于可以抽个时间来填充一下自己的知识库，页面绘制，对数据处理，数据库的相关知识点，都需要去普及以及能够掌握并使用，帮助自己能够成长，也是一项技术加分。提升自己，何乐而不为呢!  Web离线数据库，轻量级NOSQL数据库，浏览器自带 indexedDB是一种轻量级NOSQL数据库，由浏览器自带，相比Web Sql更加高效、包括索引、事务处理（数据的增删改查方法）和查询功能；在浏览器中">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-03-09T02:55:49.725Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="indexedDB">
+<meta name="twitter:description" content="项目休息阶段，终于可以抽个时间来填充一下自己的知识库，页面绘制，对数据处理，数据库的相关知识点，都需要去普及以及能够掌握并使用，帮助自己能够成长，也是一项技术加分。提升自己，何乐而不为呢!  Web离线数据库，轻量级NOSQL数据库，浏览器自带 indexedDB是一种轻量级NOSQL数据库，由浏览器自带，相比Web Sql更加高效、包括索引、事务处理（数据的增删改查方法）和查询功能；在浏览器中">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/hz_bk/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://huai-zi.github.io/2019/01/15/indexedDB/">
+
+
+
+
+
+  <title>indexedDB | 槐子</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/hz_bk/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">槐子</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">笑骂由人,洒脱地做人</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/hz_bk/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/hz_bk/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/hz_bk/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/hz_bk/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/hz_bk/404/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://huai-zi.github.io/hz_bk/2019/01/15/indexedDB/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="槐子呀呀呀嘿">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/hz_bk/images/icon.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="槐子">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">indexedDB</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-15T08:37:14+08:00">
+                2019-01-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/hz_bk/categories/数据库/" itemprop="url" rel="index">
+                    <span itemprop="name">数据库</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>项目休息阶段，终于可以抽个时间来填充一下自己的知识库，页面绘制，对数据处理，数据库的相关知识点，都需要去普及以及能够掌握并使用，帮助自己能够成长，也是一项技术加分。提升自己，何乐而不为呢!</p>
+</blockquote>
+<h3 id="Web离线数据库，轻量级NOSQL数据库，浏览器自带"><a href="#Web离线数据库，轻量级NOSQL数据库，浏览器自带" class="headerlink" title="Web离线数据库，轻量级NOSQL数据库，浏览器自带"></a>Web离线数据库，轻量级NOSQL数据库，浏览器自带</h3><blockquote>
+<p>indexedDB是一种轻量级NOSQL数据库，由浏览器自带，相比Web Sql更加高效、包括索引、事务处理（数据的增删改查方法）和查询功能；在浏览器中，永久存储，indexedDB的存储大小，与电脑硬盘的大小有关，比如:硬盘大小为500GB，那么浏览器存储的数据为250G左右.</p>
+</blockquote>
+<h3 id="兼容性及各大浏览器对indexedDB的支持情况"><a href="#兼容性及各大浏览器对indexedDB的支持情况" class="headerlink" title="兼容性及各大浏览器对indexedDB的支持情况"></a>兼容性及各大浏览器对indexedDB的支持情况</h3><ul>
+<li>IE10+</li>
+<li>Firefox 10+、Chrome 23+、Opera 15+</li>
+<li>iPhone ios8-ios10 safari支持(X5内核不支持)</li>
+<li>Android X5内核支持</li>
+</ul>
+<h4 id="各大浏览器的兼容写法"><a href="#各大浏览器的兼容写法" class="headerlink" title="各大浏览器的兼容写法"></a>各大浏览器的兼容写法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 兼容indexedDB写法 --&gt;</span><br><span class="line">window.indexedDB = window.indexedDB || window.webkitIndexedDB || window.mozIndexedDB || window.msIndexedDB;</span><br><span class="line">&lt;!-- 添加事务写法 --&gt;</span><br><span class="line">window.IDBTransaction = window.IDBTransaction || window.webkitTransaction || window.mozTransaction || window.msTransaction;</span><br><span class="line">&lt;!-- 搜索 --&gt;</span><br><span class="line">window.IDBKeyRange = window.IDBKeyRange || window.webkitIDBKeyRange || window.mozIDBKeyRange || window.msIDBKeyRange;</span><br><span class="line">&lt;!-- 游标 --&gt;</span><br><span class="line">window.IDBCursor = window.IDBCursor || window.webkitIDBCursor || window.mozIDBCursor || window.msIDBCursor;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h3 id="基础语法"><a href="#基础语法" class="headerlink" title="基础语法"></a>基础语法</h3><ul>
+<li><p>新建和打开数据库，创建表结构等需要注意的事项以及语法结构</p>
+<blockquote>
+<p>在打开数据库的时候，需要注意的是输入数据库版本号，只能打开当前版本号高的数据库，都会触发onupgradeneeded方法，如果低了，则只能触发err方法;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">function createDatabase()&#123;</span><br><span class="line">// 新建或者打开数据库</span><br><span class="line">	var db = window.indexedDB.open(&apos;testDB&apos;，1);//参数一为数据库名称，参数二为版本号</span><br><span class="line">	db.onsuccess = function(event)&#123;</span><br><span class="line">		database = db.result;//让数据库能够在任何地方访问</span><br><span class="line">	&#125;</span><br><span class="line">	db.onerror = function(err)&#123;</span><br><span class="line">		console.log(&apos;数据库打开失败&apos;)</span><br><span class="line">	&#125;</span><br><span class="line">	db.onupgradeneeded = function(event)&#123;</span><br><span class="line">// 	创建或这打开新的数据库时候，会进行调用</span><br><span class="line">// 		此时可以创建数据库的表结构</span><br><span class="line">	var database = db.result;</span><br><span class="line">	database.createObjectStore(&apos;mangerList&apos;，&#123;&apos;keyPath&apos;:&apos;id&apos;&#125;);//创建主键，方便后续的搜索查询</span><br><span class="line">    //可以创建索引</span><br><span class="line">    database.createIndex(&apos;name&apos;，&apos;name&apos;，&#123;unique:true&#125;);//三个参数分别为索引名称、索引所在的属性、配置对象（说明该属性是否包含重复的值）。</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">createDatabase()</span><br></pre></td></tr></table></figure>
+</blockquote>
+</li>
+<li><p>存储数据</p>
+<blockquote>
+<p>数据存储有，add()，主键不能相同，否则出错.方法put()，添加新的方法，如果有，则进行替换;在数据添加的时候，必须传入主键的值，否则报错</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function add ()&#123;</span><br><span class="line">	var ad = database.transaction(&apos;managerList&apos;，&apos;readwrite&apos;);//赋予事务类型</span><br><span class="line">	var err = ad.objectStore(&apos;managerList&apos;);//获取表结构</span><br><span class="line">	var ace = err.add(&#123;time:&apos;123123&apos;，name:&apos;444&apos;&#125;);//为表结构赋值</span><br><span class="line">    ace.onsuccess = function(event)&#123;</span><br><span class="line">    	alert(&apos;成功&apos;)</span><br><span class="line">    &#125;</span><br><span class="line">    ace.onerror = function(err)&#123;</span><br><span class="line">    	alert(err)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">add()</span><br></pre></td></tr></table></figure>
+</blockquote>
+</li>
+<li><p>删除数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function delete ()&#123;</span><br><span class="line">	var ad = database.transaction(&apos;managerList&apos;，&apos;readwrite&apos;);//赋予事务类型</span><br><span class="line">	var err = ad.objectStore(&apos;managerList&apos;);//获取表结构</span><br><span class="line">	var ace = err.delete(&apos;123123&apos;);//删除的数据为主键名的名称</span><br><span class="line">    ace.onsuccess = function(event)&#123;</span><br><span class="line">    	alert(&apos;成功&apos;)</span><br><span class="line">    &#125;</span><br><span class="line">    ace.onerror = function(err)&#123;</span><br><span class="line">    	alert(err)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">delete()</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查询数据</p>
+<blockquote>
+<p>使用索引的时候，需要使用指示索引搜索store.index(‘索引名称’)；直接使用索引进行搜索，只会返回匹配到符合的第一个值，这种情况，使用索引和游标进行搜索，能够返回数据中全部符合条件的值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">function get ()&#123;</span><br><span class="line">	var ad = database.transaction(&apos;managerList&apos;，&apos;readwrite&apos;);</span><br><span class="line">	var err = ad.objectStore(&apos;managerList&apos;);</span><br><span class="line">	var ace = err.get(&apos;444&apos;);//传入键名</span><br><span class="line">    ace.onsuccess = function(event)&#123;</span><br><span class="line">    	alert(&apos;成功&apos;);</span><br><span class="line">    console.log(event.target.result);//查询到的数据格式</span><br><span class="line">    &#125;</span><br><span class="line">    ace.onerror = function(err)&#123;</span><br><span class="line">    	alert(err)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">get()</span><br></pre></td></tr></table></figure>
+</blockquote>
+</li>
+<li><p>复合索引以及游标查询数据</p>
+<blockquote>
+<p>同时满足两个及以上的条件搜索，进行处理，此方法为精确查找</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">function composite(db， storeName) &#123;</span><br><span class="line">       var transaction = db.transaction(storeName);</span><br><span class="line">       var store = transaction.objectStore(storeName);</span><br><span class="line">       var index = store.index(&apos;muchIndex&apos;)</span><br><span class="line">       //同时满足两个条件的搜索</span><br><span class="line">       var onlyData = [&apos;Frank&apos;， 30]</span><br><span class="line">       var range = index.openCursor(IDBKeyRange.only(onlyData));</span><br><span class="line">       range.onsuccess = function (event) &#123;</span><br><span class="line">           var cursor = event.target.result;</span><br><span class="line">           if (cursor) &#123;</span><br><span class="line">               console.log(cursor.value);</span><br><span class="line">               cursor.continue()</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       range.onerror = function (error) &#123;</span><br><span class="line">           console.log(error);</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   composite()</span><br></pre></td></tr></table></figure>
+</blockquote>
+</li>
+<li><p>遍历数据</p>
+<blockquote>
+<p>遍历数据表中的所有对象存储，使用游标进行遍历数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">function cursor()&#123;</span><br><span class="line">    var cursor = database.transaction([&apos;managerList&apos;]，&apos;readonly&apos;);</span><br><span class="line">    var  store = cursor.objectStore(&apos;managerList&apos;);</span><br><span class="line">    var resorce = store.openCursor();</span><br><span class="line">    resorce.onsuccess = function(even)&#123;</span><br><span class="line">        //成功函数</span><br><span class="line">	var cursor = even.target.result;</span><br><span class="line">		if(cursor) &#123;</span><br><span class="line">            var list = cursor.value;</span><br><span class="line">			console.log(list)</span><br><span class="line">            cursor.continue();//继续循环</span><br><span class="line">        &#125; else &#123;//游标循环到底之后，打印出str</span><br><span class="line">            alert(123);//在这里我们就能得出list.time的值了  </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    resorce.onerror = function(err)&#123;</span><br><span class="line">        console.log(err);//错误提示</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">cursor()</span><br></pre></td></tr></table></figure>
+</blockquote>
+</li>
+<li><p>游标搜索中的方法查询</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//IDBKeyRange.only(val);只获取指定数据</span><br><span class="line">//IDBKeyRange.lowerbound(val， isOpened);获取在val以前或者小的数据，isOpened是开闭区间，false是包含val（闭区间），true是不包含val（开区间）</span><br><span class="line">//IDBKeyRange.upperbound(val， isOpened);获取在val以后或者大的数据，isOpened是值开闭区间，false是包含val（闭区间），true是不包含val（开区间）</span><br><span class="line">//IDBKeyRange.bound(val1， val2， isOpened1， isOpened2);获取在value1与value2之间的数据，isOpened1和isOpened2分别是左右开闭区间</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除整个数据库</p>
+<blockquote>
+<p>window.indexedDB.deleteDatabase(‘数据库名称’)</p>
+</blockquote>
+</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>心向阳光,何惧悲伤!小小支持,大大方方!</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/hz_bk/images/wechart.jpg" alt="槐子呀呀呀嘿 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/hz_bk/images/alipay.jpg" alt="槐子呀呀呀嘿 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/hz_bk/tags/indexedDB数据库/" rel="tag"># indexedDB数据库</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/hz_bk/2018/12/06/node-express/" rel="next" title="node_express">
+                <i class="fa fa-chevron-left"></i> node_express
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/hz_bk/2019/01/17/diary1/" rel="prev" title="玄秘的脑洞">
+                玄秘的脑洞 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/hz_bk/images/icon.jpg" alt="槐子呀呀呀嘿">
+            
+              <p class="site-author-name" itemprop="name">槐子呀呀呀嘿</p>
+              <p class="site-description motion-element" itemprop="description">我就是我,是颜色不一样的烟火</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/hz_bk/archives">
+              
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/hz_bk/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/hz_bk/tags/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/huai-zi" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:huaizio@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="tencent://message/?uin=513868268" target="_blank" title="QQ">
+                      
+                        <i class="fa fa-fw fa-qq"></i>QQ</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.csdn.net/tianlong1929" title="引导" target="_blank">引导</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Web离线数据库，轻量级NOSQL数据库，浏览器自带"><span class="nav-number">1.</span> <span class="nav-text">Web离线数据库，轻量级NOSQL数据库，浏览器自带</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#兼容性及各大浏览器对indexedDB的支持情况"><span class="nav-number">2.</span> <span class="nav-text">兼容性及各大浏览器对indexedDB的支持情况</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#各大浏览器的兼容写法"><span class="nav-number">2.1.</span> <span class="nav-text">各大浏览器的兼容写法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基础语法"><span class="nav-number">3.</span> <span class="nav-text">基础语法</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">槐子呀呀呀嘿</span>
+
+  
+</div>
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/hz_bk/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/hz_bk/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/hz_bk/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/hz_bk/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/hz_bk/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/hz_bk/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/hz_bk/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/hz_bk/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/hz_bk/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/hz_bk/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/hz_bk/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/hz_bk/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/hz_bk/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
